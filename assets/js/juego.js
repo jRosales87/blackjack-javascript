@@ -26,6 +26,17 @@ const crearDesk = () => {
         desk.push(`${special}${type}`);
     }
    }
-    return _.shuffle(desk)
+   desk = _.shuffle(desk);
+    return desk; 
 }
 
+crearDesk();
+
+const pedirCarta = () => {
+    if(desk.length === 0){
+        throw 'No hay más cartas';
+    }
+    return desk.pop();
+}
+
+pedirCarta();
