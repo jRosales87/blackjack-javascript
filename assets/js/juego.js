@@ -14,6 +14,7 @@ let puntosJ = 0, puntosB = 0;
 //Referencias 
 const btnPedir = document.querySelector('#btnPedir'),
       btnDetener = document.querySelector('#btnDetener'),
+      btnNuevo = document.querySelector('#btnNuevo'),
       smalls = document.querySelectorAll('small'),
       jugadorCartas = document.querySelector('#jugador-cartas'),
       bancaCartas = document.querySelector('#banca-cartas');
@@ -75,7 +76,17 @@ do {
     
 } while ( (puntosB < puntosMinimos) && (puntosMinimos <= 21 ) );
 
-
+setTimeout(() => {
+    if ( puntosB === puntosMinimos ) {
+        alert('nadie gana');
+    }else if( puntosMinimos > 21 ){
+        alert('banca gana');
+    }else if(puntosB > 21){
+        alert('jugador gana');
+    }else{
+        alert('banca gana');
+    }
+}, 10);
 
 
 }
@@ -115,5 +126,17 @@ btnDetener.addEventListener('click', () => {
     turnoBanca( puntosJ );
 })
 
-
+btnNuevo.addEventListener('click', () => {
+    desk = [];
+    desk = crearDesk();
+    puntosB = 0;
+    puntosJ = 0;
+    jugadorCartas.innerHTML = "";
+    bancaCartas.innerHTML = "";
+    smalls[0].innerHTML = 0;
+    smalls[1].innerHTML = 0;
+    btnPedir.disabled = false;
+    btnDetener.disabled = false;
+    console.log(desk);
+})
 
